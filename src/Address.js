@@ -41,6 +41,16 @@ var Address = function(parameters) {
                 enumerable:true,
                 writable:true
             },
+            Line1:{
+                value:'',
+                enumerable:true,
+                writable:true
+            },
+            Line2:{
+                value:'',
+                enumerable:true,
+                writable:true
+            },
             _init:{
                 value:init,
                 enumerable:false,
@@ -67,10 +77,15 @@ var Address = function(parameters) {
 
 
         if (util.isArray(this._parameters)) {
+          if (this._parameters.length == 2) {
+            this.Line1 = this._parameters[0];
+            this.Line2 = this._parameters[1];
+          } else {
             this.Street = this._parameters[0];
             this.City = this._parameters[1];
             this.Region = this._parameters[2];
             this.PostalCode = this._parameters[3];
+          }
         }
 
         if (typeof this._parameters == 'number') {
@@ -122,10 +137,10 @@ var Address = function(parameters) {
     };
 
     function getAddressLines() {
-        var line1 = (this.Street ? this.Street : '');
-        var line2 = (this.City ? this.City + ',' : '') +
+        var line1 = (this.Line1 ? this.Line1 : (this.Street ? this.Street : ''));
+        var line2 = (this.Line2 ? this.Line2 : (this.City ? this.City + ',' : '') +
             (this.Region ? this.Region + ',' : '') +
-            this.PostalCode
+            this.PostalCode)
 
         var lines=[line1, line2];
         lines.line1=line1;
