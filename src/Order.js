@@ -48,6 +48,7 @@ var Order = function(parameters) {
         this.Email = Customer.email;
         this.FirstName = Customer.firstName;
         this.LastName = Customer.lastName;
+        this.Phone = Customer.phone;
     }
     if (parameters['Order']) { //Used to initialize order object from Dominos results (Also handy for initializing from DB)
         var prevOrder = parameters.Order;
@@ -57,6 +58,7 @@ var Order = function(parameters) {
         this.Email = prevOrder.Email;
         this.FirstName = prevOrder.FirstName;
         this.LastName = prevOrder.LastName;
+        this.Phone = prevOrder.Phone;
         this.OrderID = prevOrder.OrderID;
         this.Products = prevOrder.Products;
         this.Market = prevOrder.Market;
